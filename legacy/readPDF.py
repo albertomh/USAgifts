@@ -24,3 +24,8 @@ def readPDF():
             with open(''.join(['datadump', pdfyear, '.txt']), 'a') as txtdump:
                 for page in range(pdfReader.getNumPages()):
                     txtdump.write(pdfReader.getPage(page).extractText())
+
+
+if __name__ == '__main__':
+    readPDF()
+    
