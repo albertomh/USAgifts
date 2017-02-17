@@ -41,3 +41,26 @@ def extract(year):
           + ' gifts recorded. | That took:'
           + '{0:.1f}'.format(time_taken)
           + 'seconds.\n')
+
+
+def alldir():
+    """
+    Looks through 'dirpath/xml/' (line 6) and iteratively
+    applies extract() to the .xml files it finds.
+
+    """
+
+    l_xmls = []
+
+# Populate 'l_xmls' with files from 'dirpath' (generates a list of years).
+    for file in os.listdir(dirpath + 'xml\\'):
+        if file.endswith(".xml"):
+            l_xmls.append(('').join(file.split('.')[:-1]))
+
+# Apply extract() to each .xml file in 'dirpath'.
+    for year in l_xmls:
+        extract(year)
+
+
+if __name__ == '__main__':
+    alldir()
