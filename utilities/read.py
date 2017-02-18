@@ -23,3 +23,17 @@ def clean(year):
 # Write data back to year.txt.
     with open(dirpath + 'txt\\' + str(year) + '.txt', 'wb') as outfile:
         outfile.write(giftdata.encode('utf8'))
+
+
+def read(year):
+    """
+    Reads data from the textfiles generated using parseXML.py.
+    Returns data evaluated into a usable list.
+
+    """
+
+    with open(dirpath + 'txt\\' + str(year) + '.txt', encoding='utf8') as infile:
+        indata = infile.read()
+    giftdata = ast.literal_eval(indata)
+
+    return giftdata
