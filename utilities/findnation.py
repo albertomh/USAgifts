@@ -6,6 +6,8 @@ def findnation(year, *args):
     """
     Returns a list of every nation that gifts in a given year.
 
+    Run findnation(year, "missing") to return list of records missing gifter nation data.
+
     """
 
 # Initialise lists with processed data and list of nations.
