@@ -13,3 +13,9 @@ def findnation(year):
     with open('l_nations.txt', encoding='utf8') as infile:
         indata = infile.read()
     nations = ast.literal_eval(indata)
+
+# Populate 'contained' with every instance of a nation found in 'giftdata'.
+    contained = []
+    for row in range(len(giftdata)):
+        nationmatch = [x for x in nations if x in giftdata[row][2]]
+        contained.extend(nationmatch)
