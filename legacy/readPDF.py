@@ -1,4 +1,5 @@
 import os
+import PyPDF2
 
 
 def readPDF():
@@ -12,7 +13,7 @@ def readPDF():
             l_pdfs.append(file)
     print(l_pdfs)
 
-    
+
 # Read each file referred to in 'l_pdfs' and writes ocntents to 'datadump$YEAR.txt'.
 
     for pdf in l_pdfs:
@@ -28,4 +29,3 @@ def readPDF():
 
 if __name__ == '__main__':
     readPDF()
-    
