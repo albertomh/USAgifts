@@ -22,4 +22,7 @@
  'Italian': 'Italy',
  'Portuguese': 'Portugal',
  'Argentine': 'Argentina',
- 'Buenos Aires': 'Argentina'}
+ 'Buenos Aires': 'Argentina',
+ 'North Atlantic Treaty Organization': 'NATO',
+ 'World Health Organization': 'WHO, United Nations',
+ "Côte d'Ivoire": 'Ivory Coast'}
