@@ -1,4 +1,5 @@
 import ast
+import re
 
 dirpath = r'$PATH'
 
@@ -19,6 +20,9 @@ def clean(year):
 # Replace strings found in d_replacements.txt.
     for k, v in replacements.items():
         giftdata = giftdata.replace(k, v)
+
+# Delete comma in dollar amounts
+    giftdata = re.sub(r'\$(\d+),(\d+)', r'$\1\2', giftdata)
 
 # Write data back to year.txt.
     with open(dirpath + 'txt\\' + str(year) + '.txt', 'wb') as outfile:
