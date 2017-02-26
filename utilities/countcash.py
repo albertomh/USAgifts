@@ -25,12 +25,18 @@ def countcash(year):
 # Regular expressions to find cash, gold, books and alcohol.
     re_cash = re.compile('\$(\d*)')
     re_gold = re.compile('gold', re.IGNORECASE)
+    re_book = re.compile('book', re.IGNORECASE)
+    re_booze = re.compile('alcohol|wine|whiskey|cognac|champagne|spirits', re.IGNORECASE)
+    totalbook = 0
+    totalbooze = 0
 
     for row in range(len(giftdata)):
         recash = re_cash.findall(giftdata[row][1])
         recash = list(filter(None, recash))
         recash = list(map(int, recash))
         regold = re_gold.findall(giftdata[row][1])
+        rebook = re_book.findall(giftdata[row][1])
+        rebooze = re_booze.findall(giftdata[row][1])
 
         nationmatch = [x for x in contained if x in giftdata[row][2]]
 
@@ -38,6 +44,10 @@ def countcash(year):
             d_cash[nationmatch[0]] += sum(recash)
         if regold:
             d_gold[nationmatch[0]] += len(regold)
+        if rebook:
+            totalbook += len(rebook)
+        if rebooze:
+            totalbooze += len(rebooze)
 
     d_cash = {k: v for k, v in d_cash.items() if v is not 0}
     d_gold = {k: v for k, v in d_gold.items() if v is not 0}
@@ -48,6 +58,7 @@ def countcash(year):
     maxgold = max(d_gold, key=d_gold.get)
 
     output = {'total': totalcash, 'cashnation': maxcash, 'topcash': d_cash[maxcash],
-              'totalgold': totalgold, 'goldnation': maxgold, 'topgold': d_gold[maxgold]}
+              'totalgold': totalgold, 'goldnation': maxgold, 'topgold': d_gold[maxgold],
+              'books': totalbook, 'booze': totalbooze}
 
     return output
