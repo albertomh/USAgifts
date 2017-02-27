@@ -62,3 +62,19 @@ def countcash(year):
               'books': totalbook, 'booze': totalbooze}
 
     return output
+
+
+def bynation(year, nation):
+    """
+    NEEDS DOCUMENTING!
+    bynation(1999, "China") returns China: $8,380.00
+
+    """
+
+    giftdata = read(year)
+    results = []
+
+# NEEDS DOCUMENTING!
+    for row in range(len(giftdata)):
+        if nation in giftdata[row][2]:
+            results.append(giftdata[row][1])
