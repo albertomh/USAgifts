@@ -91,3 +91,15 @@ def bynation(year, nation):
     d_results = (nation, sum(totalcash))
 
     return d_results  # nation + ': ${:,.2f}'.format(sum(totalcash)))
+
+
+def listall(year):
+    """
+    Lists every country and their cash total for a given year.
+
+    """
+
+    l_results = []
+    for nation in findnation(year):
+        l_results.append(bynation(year, nation))
+    return l_results
