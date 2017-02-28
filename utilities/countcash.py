@@ -129,3 +129,14 @@ def ccdetail(year):
                 d_mentions = {}
                 for nation in contained:
                     d_mentions[nation] = 0
+
+# Populate d_mentions, a dictionary with the format nation: totalcash where there exists a
+# dictionary for each file in the directory (that is, for each agency).
+                for row in range(len(giftdata)):
+                    for nation in contained:
+                        if nation in giftdata[row][2]:
+                            recash = re.compile('\$(\d*)').findall(giftdata[row][1])
+                            recash = list(filter(None, recash))
+                            recash = list(map(int, recash))
+                            totalcash = sum(recash)
+                            d_mentions[nation] = d_mentions.get(nation, 0) + totalcash
