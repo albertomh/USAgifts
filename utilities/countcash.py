@@ -109,9 +109,8 @@ def listall(year):
 
 def ccdetail(year):
     """
-    NEEDS DOCUMENTING!
-
-    Return top donor per department in a given year as a dictionary with tuple values.
+    Return top donor per department in a given year as a dictionary with tuple values of the form:
+    {'$agency': ('$nation', $nationgift, $totalforagency), (...), ...}
 
     """
 
@@ -130,8 +129,7 @@ def ccdetail(year):
                 for nation in contained:
                     d_mentions[nation] = 0
 
-# Populate d_mentions, a dictionary with the format nation: totalcash where there exists a
-# dictionary for each file in the directory (that is, for each agency).
+# For each agency, populate a dictionary (d_mentions) with the format nation: totalcash.
                 for row in range(len(giftdata)):
                     for nation in contained:
                         if nation in giftdata[row][2]:
@@ -140,3 +138,13 @@ def ccdetail(year):
                             recash = list(map(int, recash))
                             totalcash = sum(recash)
                             d_mentions[nation] = d_mentions.get(nation, 0) + totalcash
+
+# Filter empty entries to dictionary and get maximum country for each agency.
+                d_mentions = {k: v for (k, v) in d_mentions.items() if v > 0}
+                if any(d_mentions):
+                    maximum = max(d_mentions, key=d_mentions.get)
+
+                label = file[4:-4]
+                results[label] = (maximum, d_mentions[maximum], sum(d_mentions.values()))
+
+    return results
