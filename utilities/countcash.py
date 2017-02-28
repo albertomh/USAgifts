@@ -1,4 +1,6 @@
+import ast
 import re
+import os
 from read import read
 from findnation import findnation
 
@@ -103,3 +105,27 @@ def listall(year):
     for nation in findnation(year):
         l_results.append(bynation(year, nation))
     return l_results
+
+
+def ccdetail(year):
+    """
+    NEEDS DOCUMENTING!
+
+    Return top donor per department in a given year as a dictionary with tuple values.
+
+    """
+
+    results = {}
+
+    for file in os.listdir(dirpath + 'txt\\' + str(year)):
+        if not file.endswith(str(year) + '.txt'):
+
+            with open(dirpath + 'txt\\' + str(year) + '\\' + file, encoding='utf8') as infile:
+                indata = infile.read()
+                giftdata = ast.literal_eval(indata)
+
+                contained = findnation(year)
+
+                d_mentions = {}
+                for nation in contained:
+                    d_mentions[nation] = 0
