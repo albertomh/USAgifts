@@ -78,3 +78,16 @@ def bynation(year, nation):
     for row in range(len(giftdata)):
         if nation in giftdata[row][2]:
             results.append(giftdata[row][1])
+
+# NEEDS DOCUMENTING!
+    re_cash = re.compile('\$(\d*)')
+    totalcash = []
+    for gift in range(len(results)):
+        recash = re_cash.findall(results[gift])
+        recash = list(filter(None, recash))
+        recash = list(map(int, recash))
+        totalcash.extend(recash)
+
+    d_results = (nation, sum(totalcash))
+
+    return d_results  # nation + ': ${:,.2f}'.format(sum(totalcash)))
