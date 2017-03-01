@@ -148,3 +148,11 @@ def ccdetail(year):
                 results[label] = (maximum, d_mentions[maximum], sum(d_mentions.values()))
 
     return results
+
+
+def report(year):
+
+    print('\n\n', 'Total: ${:,.2f}'.format(countcash(year)['total']), '\t\t\t Top nation:', countcash(year)['cashnation'],
+          '${:,.2f}'.format(countcash(year)['topcash']))
+    print('\n', 'Total:', countcash(year)['totalgold'], 'gifts of gold.', '\t\t Top nation:', countcash(year)['goldnation'], countcash(year)['topgold'])
+    print('\n', 'Total books:', countcash(year)['books'], '\t\t\t\t Total booze:', countcash(year)['booze'])
