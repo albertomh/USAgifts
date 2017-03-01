@@ -1,6 +1,7 @@
 import ast
 import re
 import os
+import time
 from read import read
 from findnation import findnation
 
@@ -152,7 +153,15 @@ def ccdetail(year):
 
 def report(year):
 
+    start_time = time.perf_counter()
+
     print('\n\n', 'Total: ${:,.2f}'.format(countcash(year)['total']), '\t\t\t Top nation:', countcash(year)['cashnation'],
           '${:,.2f}'.format(countcash(year)['topcash']))
     print('\n', 'Total:', countcash(year)['totalgold'], 'gifts of gold.', '\t\t Top nation:', countcash(year)['goldnation'], countcash(year)['topgold'])
     print('\n', 'Total books:', countcash(year)['books'], '\t\t\t\t Total booze:', countcash(year)['booze'])
+
+    print('-' * 80, '\n\n', ccdetail(year))
+    print('-' * 80, '\n\n', listall(year))
+
+    time_taken = time.perf_counter() - start_time
+    print('\n\n', '|| That took:', '{0:.1f}'.format(time_taken), 'seconds. ||')
