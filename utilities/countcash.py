@@ -2,6 +2,7 @@ import ast
 import re
 import os
 import time
+from math import log10
 from read import read
 from findnation import findnation
 
@@ -165,3 +166,24 @@ def report(year):
 
     time_taken = time.perf_counter() - start_time
     print('\n\n', '|| That took:', '{0:.1f}'.format(time_taken), 'seconds. ||')
+
+
+def mapcsv(year):
+    """
+    Creates a csv file for a given year, containing two columns: countries, money.
+    This is a list of the countries that contributed that year and the log of the
+    total cash value of their contribution. (The log is used to make the colour
+    scheme of the map more uniform.)
+
+    """
+
+    l_results = listall(year)
+    logmoney = 0
+
+    with open(dirpath + 'web\\map\\' + str(year) + '.csv', 'wb') as outfile:
+        outfile.write(b'countries,money\n')
+        for row in range(len(l_results)):
+            if l_results[row][1] != 0:
+                logmoney = log10(l_results[row][1])
+            elif l_results[row][1] == 0:
+                logmoney = 0
