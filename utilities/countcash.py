@@ -187,3 +187,9 @@ def mapcsv(year):
                 logmoney = log10(l_results[row][1])
             elif l_results[row][1] == 0:
                 logmoney = 0
+
+            if logmoney != 0:
+                logmoney = '{:.5f}'.format(logmoney)
+                outfile.write('{},{}\n'.format(l_results[row][0], logmoney).encode('utf8'))
+            else:
+                pass
