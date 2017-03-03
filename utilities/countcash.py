@@ -202,6 +202,7 @@ def agencies():
     """
 
     results = {}
+    rlist = []
 
     for year in list(range(1999, 2016)):
         alllist = []
@@ -209,3 +210,7 @@ def agencies():
             alllist.append(str(file[4:-4]))
             alllist = [x for x in alllist if x != '']
             results[year] = alllist
+
+    for year in list(range(1999, 2016)):
+        rlist.append(results[year])
+    return set(rlist[0]).intersection(*rlist)
