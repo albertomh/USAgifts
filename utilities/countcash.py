@@ -193,3 +193,19 @@ def mapcsv(year):
                 outfile.write('{},{}\n'.format(l_results[row][0], logmoney).encode('utf8'))
             else:
                 pass
+
+
+def agencies():
+    """
+    Return agencies common to all years.
+
+    """
+
+    results = {}
+
+    for year in list(range(1999, 2016)):
+        alllist = []
+        for file in os.listdir(dirpath + 'txt\\' + str(year)):
+            alllist.append(str(file[4:-4]))
+            alllist = [x for x in alllist if x != '']
+            results[year] = alllist
