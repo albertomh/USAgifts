@@ -7,10 +7,45 @@
 		<meta name="author" content="">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../css/normalize.css">
+		<link rel="canonical" href="https://albertomh.com/projects/aatb">
+
+		<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="https://s3-eu-west-1.amazonaws.com/paperhoot-static/js/c3.min.js" charset="utf-8"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
     </head>
 
-    <body>
+    <body class="cutive">
 
-	</body>
+	    <div class="container">
+
+	    	<div class="row shadow header-wrap">
+	    		<div class="one columns">
+    				&nbsp;
+    			</div>
+	    		<div class="one columns">
+    				<img src="aatb/arrow.svg" class="arrow" id="arrowLeft" onclick="minusYear();">
+    			</div>
+    			<div class="eight columns">
+    				<img src="aatb/title.svg" alt="All about the Benjamins" class="title">
+    			</div>
+    			<!--<div class="two columns">
+    				Year: 
+    				<img src="aatb/seal.svg" alt="Seal" style="padding-top: 1vh; height: 10vh;">
+    			</div>-->
+    			<div class="one columns">
+    				<img src="aatb/arrow.svg" class="arrow flipped" id="arrowRight" onclick="plusYear();">
+    			</div>
+    			<div class="one columns">
+    				&nbsp;
+    			</div>
+    		</div>
+
+    	</div>
+    </body>
 
 </html>
