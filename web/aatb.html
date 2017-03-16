@@ -157,6 +157,27 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
 
     	var h = 420, /*450, 960*/
         	w = 960;
+
+        // set-up unit projection and path
+        var projection = d3.geo.mercator()
+                .scale(1)
+                .translate([0, 0]);
+
+        var path = d3.geo.path()
+                .projection(projection);
+
+        // set-up svg canvas
+        var svg = d3.select("#map").append("svg")
+                .attr("height", h)
+                .attr("width", w);
+        var color = d3.scale.linear()
+                //.range([d3.rgb("#85bb65"), d3.rgb("#7564b9")]); Green and purple
+                .range([d3.rgb("#85bb65"), d3.rgb("#000000")]);
+        var showValue= "money";
+        var record=[];
+
+        var linear = d3.scale.linear()
+                .range(["blue", "red"]);
 }
 
 </script>
