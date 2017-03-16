@@ -178,7 +178,16 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
 
         var linear = d3.scale.linear()
                 .range(["blue", "red"]);
-}
+
+
+        function addRecord(d){
+            d[showValue]=+d[showValue];
+            var obj = {key: d.countries, value: d[showValue]};
+            record.push(obj);
+            return d;
+
+        }
+    }
 
 </script>
 
