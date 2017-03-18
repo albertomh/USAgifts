@@ -191,7 +191,7 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
 
     // CSV FILE WITH NUMERICAL DATA
         d3.csv("aatb/map/" + year + ".csv", addRecord, function(error,data){
-            color.domain(d3.extent(data, function(d){
+            color.domain(d3.extent(data, function(d){º1
                 return d[showValue];
             }));
             linear.domain(d3.extent(data, function(d){
@@ -199,9 +199,23 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
             }));
         });
 
+        //https://github.com/johan/world.geo.json
+        d3.json("aatb/countries.topo.json", function(error, data) {
+
+            d3.csv("aatb/idCountry.csv", function(error, csv) {
+                var world = data.features;
+
+                csv.forEach(function(d, i) {
+                    world.forEach(function(e, j) {
+                        if (d.id === e.id) {
+                            e.name = d.name
+                        }
+                    })
+                })
+
 
     }
-    
+
 </script>
 
 </html>
