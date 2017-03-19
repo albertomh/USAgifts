@@ -235,6 +235,20 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
             });
 
 
+            function reporter(x) {
+                console.log(x);
+                var value = "-"; //Default: "Not known"
+                record.forEach(function(d){
+                    if(x.name === d.key){
+                        console.log(value);
+                        value = Math.pow(10, d.value);
+                        value = '$' + Math.ceil(value).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+                        return;
+                    }
+                });
+
+
+            }
 
         })
     }
