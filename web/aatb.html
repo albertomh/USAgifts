@@ -252,6 +252,16 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
 
             }
 
+            function getColor(data){
+                var value=-1;
+                record.forEach(function(d){
+                    if(data.name === d.key){
+                        value = d.value;
+                        return;
+                    }
+                });
+            }
+
         })
     }
 
