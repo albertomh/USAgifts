@@ -280,6 +280,23 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
     }
     document.getElementById("map").style.display = "block";
 
+
+    var curYear = years[0];
+
+    function minusYear(){
+        if (curYear != years[0]) {
+            curYear -= 1;
+            console.log(curYear);
+            update(curYear);
+        }
+        else if (curYear == years[0]) {
+            curYear += (years.length-1);
+            console.log(curYear);
+            update(curYear);
+        }
+    }
+
+
 </script>
 
 </html>
