@@ -296,6 +296,19 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
         }
     }
 
+    function plusYear(){
+        if (curYear != years[years.length-1]) {
+            curYear += 1;
+            console.log(curYear);
+            update(curYear);
+        }
+        else if (curYear == years[years.length-1]) {
+            curYear -= (years.length - 1);
+            console.log(curYear);
+            update(curYear);
+        }
+    }
+
 
 </script>
 
