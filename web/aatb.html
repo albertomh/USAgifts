@@ -309,6 +309,13 @@ box-shadow: 0px 2px 3px 0px rgba(56,56,56,1);
         }
     }
 
+    window.onload = function() {
+        update(1999);
+
+        var mapDiv = document.getElementById("map");
+        var cyDiv = document.getElementById("curYear")
+        mapDiv.insertBefore(cyDiv, mapDiv.firstChild);
+    }
 
 </script>
 
